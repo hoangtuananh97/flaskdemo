@@ -1,18 +1,18 @@
 """ manage.py """
-from flask_script import Manager
 from flask_migrate import MigrateCommand
+from flask_script import Manager
 
 from app import create_app, db
 
-APP = create_app('default')
+APP = create_app("default")
 
 manager = Manager(APP)
-manager.add_command('db', MigrateCommand)
+manager.add_command("db", MigrateCommand)
 
 
 @manager.command
 def recreate_db():
-    """ Recreates a database """
+    """Recreates a database"""
     db.drop_all()
     db.create_all()
     db.session.commit()

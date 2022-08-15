@@ -109,7 +109,7 @@ def login():
             "token": None,
         }
         return jsonify(response_object), 400
-    except Exception as e:
+    except Exception:
         response_object = {
             "status": "Fail",
             "message": "Invalid credentials",
