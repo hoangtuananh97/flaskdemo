@@ -4,7 +4,7 @@ from functools import wraps
 from flask import jsonify, request
 
 from app import db
-from app.models import Users
+from app.api.model.account.user import Users
 
 
 def add_user(username, password):
@@ -43,7 +43,7 @@ def validate_auth_json(function):
 
 
 def login_required(function):
-    """utility  decorator function to check is user is authenticated"""
+    """utility  decorator function to check is users is authenticated"""
 
     @wraps(function)
     def decorated(*args, **kwargs):

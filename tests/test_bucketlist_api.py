@@ -16,7 +16,7 @@ class TestBucketListCase(BaseTestCase):
         self.app_context.push()
         self.client = self.app.test_client(self)
         db.create_all()
-        # log in a user
+        # log in a users
         resp = self.client.post(
             "auth/register",
             data=json.dumps(dict(username="testuser", password="testpassword")),

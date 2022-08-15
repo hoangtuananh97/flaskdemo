@@ -1,17 +1,17 @@
-""" unit tests for the user model """
+""" unit tests for the users model """
 from sqlalchemy.exc import IntegrityError
 
-from app.models import Users
+from app.api.model import Users
 from app.utils import add_user
 
 from .test_base import BaseTestCase
 
 
 class UsersTestCase(BaseTestCase):
-    """unit tests for the user model"""
+    """unit tests for the users model"""
 
     def test_add_user(self):
-        """Ensure that user is added"""
+        """Ensure that users is added"""
         user = add_user("Paul", "password")
         self.assertTrue(user.id)
         self.assertEqual(user.username, "Paul")
@@ -33,7 +33,7 @@ class UsersTestCase(BaseTestCase):
             user = Users(password="Paul")  # NOQA
 
     def test_encode_auth_token(self):
-        """Ensure that authentication token is returned after user registration"""
+        """Ensure that authentication token is returned after users registration"""
         user = add_user(username="Paul", password="password")
         auth_token = user.encode_auth_token(user.id)
         self.assertTrue(isinstance(auth_token, bytes))
