@@ -1,11 +1,4 @@
-# BucketList-REST-API
-[![Build Status](https://travis-ci.org/Descartess/BucketList-REST-API.svg?branch=master)](https://travis-ci.org/Descartess/BucketList-REST-API)
-[![Coverage Status](https://coveralls.io/repos/github/Descartess/BucketList-REST-API/badge.svg?branch=master)](https://coveralls.io/github/Descartess/BucketList-REST-API?branch=master)
-
-
 **BucketList** is a web application designed to help one to record, edit, update activities one desires to accomplish before reaching a certain age. This application exposes a rest API which can be consumed
-
-This is deployed on heroku with a base url http://descartes-bucketlist.herokuapp.com/
 
 ## Technologies
 1. Python 3.8+
@@ -38,7 +31,6 @@ python manage.py recreate_db
 ```
 
 ## Documentation
-The API documentation can be found at http://descartes-bucketlist.herokuapp.com/apidocs/
 ```
 http://127.0.0.1:5000/apidocs/
 ```
