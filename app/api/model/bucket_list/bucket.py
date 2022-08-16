@@ -1,10 +1,10 @@
 """ BucketList Models """
 from app import db
-from app.api.model.base import BaseModelMeta
+from app.api.model.base import BaseModel
 
 
-class BucketLists(BaseModelMeta):
-    """Model for bucket lists"""
+class BucketLists(BaseModel):
+    """Model for bucket lists lists"""
 
     __tablename__ = "bucketlists"
     id = db.Column(db.Integer, primary_key=True)
@@ -19,7 +19,7 @@ class BucketLists(BaseModelMeta):
     )
 
     def to_json(self):
-        """Convert bucket list model to json format"""
+        """Convert bucket lists list model to json format"""
         json_data = {
             "id": self.id,
             "name": self.name,
@@ -29,8 +29,8 @@ class BucketLists(BaseModelMeta):
         return json_data
 
 
-class BucketListItems(BaseModelMeta):
-    """Model for bucket list items"""
+class BucketListItems(BaseModel):
+    """Model for bucket lists list items"""
 
     __tablename__ = "bucketlistitems"
     id = db.Column(db.Integer, primary_key=True)

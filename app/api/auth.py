@@ -4,13 +4,13 @@ from sqlalchemy.exc import IntegrityError
 
 from app import bcrypt, db
 from app.api.model.account.user import Users
-from app.utils import add_user, login_required, validate_auth_json
+from app.core.common.common import add_user
+from app.core.common.utils import login_required
 
 auth_blueprint = Blueprint("auth", __name__)
 
 
 @auth_blueprint.route("/register", methods=["POST"])
-@validate_auth_json
 def register():
     """Register a new users
     ---
@@ -64,7 +64,6 @@ def register():
 
 
 @auth_blueprint.route("/login", methods=["POST"])
-@validate_auth_json
 def login():
     """Login in old users
     ---

@@ -15,7 +15,7 @@ api = AccountBlueprint.api
 
 
 @api.route("/login/")
-class AccountLogic(Resource):
+class AccountLogin(Resource):
     @accepts(
         api=api,
         schema=LoginRequestSchema,
