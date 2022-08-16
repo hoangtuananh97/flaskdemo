@@ -9,7 +9,9 @@ class UnauthorizedException(APIException):
     http_status = HTTPStatus.UNAUTHORIZED
 
     def __init__(self, message=ErrorMessages.un_authorized, extra=None):
-        super().__init__(http_status=HTTPStatus.UNAUTHORIZED, message=message, extra=extra)
+        super().__init__(
+            http_status=HTTPStatus.UNAUTHORIZED, message=message, extra=extra
+        )
 
     def __str__(self):
         return "Unauthorized"

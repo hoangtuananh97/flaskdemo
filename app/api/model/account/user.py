@@ -5,10 +5,10 @@ import jwt
 from flask import current_app
 
 from app import bcrypt, db
-from app.api.model.base import BaseModelMeta
+from app.api.model.base import BaseModel
 
 
-class Users(BaseModelMeta):  # NOQA
+class Users(BaseModel):  # NOQA
     """Model for users"""
 
     __tablename__ = "users"
@@ -53,4 +53,3 @@ class Users(BaseModelMeta):  # NOQA
             return "Expired token. Please Log in again"
         except jwt.InvalidTokenError:
             return "Invalid token. Please log in again"
-

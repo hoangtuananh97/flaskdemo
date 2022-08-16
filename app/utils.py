@@ -7,14 +7,6 @@ from app import db
 from app.api.model.account.user import Users
 
 
-def add_user(username, password):
-    """Utility function that adds users to database"""
-    user = Users(username=username, password=password)
-    db.session.add(user)
-    db.session.commit()
-    return user
-
-
 def validate_auth_json(function):
     """decorator function to validate authentication json"""
 

@@ -5,8 +5,8 @@ from http import HTTPStatus
 from flask import g
 from werkzeug.exceptions import HTTPException
 
-from app.extensions.error import Error
 from app.core.exceptions import APIException
+from app.extensions.error import Error
 
 logger = logging.getLogger("app")
 

@@ -1,12 +1,21 @@
 import sqlalchemy
 from sqlalchemy.dialects.postgresql import insert
 
+from app.api.model import Users
+from app.core.exceptions.schema_validation import ValidatorException
 from app.extensions.database import db
-from app.lib.exceptions.schema_validation import ValidatorException
 
 
 def get_current_user():
     return "SYSTEM"
+
+
+def add_user(username, password):
+    """Utility function that adds users to database"""
+    user = Users(username=username, password=password)
+    db.session.add(user)
+    db.session.commit()
+    return user
 
 
 def save_bulk(data):

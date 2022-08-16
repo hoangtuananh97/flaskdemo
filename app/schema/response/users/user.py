@@ -12,4 +12,6 @@ class UserResponseSchema(BaseResponseSchema):
 
 
 class UserLoginResponseSchema(BaseResponseSchema):
+    id = Integer(required=True)
+    username = String(required=True)
     token = String(required=True)

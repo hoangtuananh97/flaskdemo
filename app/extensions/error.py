@@ -1,4 +1,3 @@
-
 class Error:
     def __init__(self, request_id, exc_value, exc_traceback=None):
         self.req_id = request_id
