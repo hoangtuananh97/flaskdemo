@@ -38,7 +38,6 @@ http://127.0.0.1:5000/apidocs/
 * Users can create accounts
 * Users can sigin and signout of application
 * Users can create,edit,view and delete bucket lists
-* Users can create,edit,view and delete bucket list items
 * Users can search bucketlists
 * Users can use pagination
 * Users can reset passwords

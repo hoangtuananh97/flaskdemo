@@ -2,8 +2,8 @@
 from flask import Blueprint, jsonify, request
 
 from app import db
-from app.models import BucketListItems, BucketLists
-from app.utils import login_required
+from app.api.model.bucket_list.bucket import BucketListItems, BucketLists
+from app.core.common.utils import login_required
 
 bucketlist_blueprint = Blueprint("bucketlists", __name__)
 
@@ -18,7 +18,7 @@ def post_bucketlist(user):
     parameters:
       - name: "Authorization"
         in: "header"
-        description: "Token of a logged in user"
+        description: "Token of a logged in users"
         required: true
         type: "string"
       - in: "body"
@@ -61,7 +61,7 @@ def get_bucketlist(user):
     parameters:
       - name: "Authorization"
         in: "header"
-        description: "Token of a logged in user"
+        description: "Token of a logged in users"
         required: true
         type: "string"
     responses:
@@ -101,7 +101,7 @@ def retrive_bucketlist(user, bucketlist_id):
     parameters:
       - name: "Authorization"
         in: "header"
-        description: "Token of a logged in user"
+        description: "Token of a logged in users"
         required: true
         type: "string"
     responses:
@@ -126,7 +126,7 @@ def del_bucketlist(user, bucketlist_id):
     parameters:
       - name: "Authorization"
         in: "header"
-        description: "Token of a logged in user"
+        description: "Token of a logged in users"
         required: true
         type: "string"
     responses:
@@ -154,7 +154,7 @@ def update_bucketlist(user, bucketlist_id):
     parameters:
       - name: "Authorization"
         in: "header"
-        description: "Token of a logged in user"
+        description: "Token of a logged in users"
         required: true
         type: "string"
       - in: "body"
@@ -193,14 +193,14 @@ def update_bucketlist(user, bucketlist_id):
 @bucketlist_blueprint.route("/<int:bucketlist_id>/items", methods=["POST"])
 @login_required
 def create_bucketlist_item(user, bucketlist_id):
-    """Create a new bucket list item
+    """Create a new bucketlists list item
     ---
     tags:
       - "bucketlists items"
     parameters:
       - name: "Authorization"
         in: "header"
-        description: "Token of a logged in user"
+        description: "Token of a logged in users"
         required: true
         type: "string"
       - in: "body"
@@ -233,14 +233,14 @@ def create_bucketlist_item(user, bucketlist_id):
 @bucketlist_blueprint.route("/<int:bucketlist_id>/items/<int:item_id>", methods=["PUT"])
 @login_required
 def edit_bucketlist_item(user, bucketlist_id, item_id):
-    """Edit bucket list item
+    """Edit bucketlists list item
     ---
     tags:
       - "bucketlists items"
     parameters:
       - name: "Authorization"
         in: "header"
-        description: "Token of a logged in user"
+        description: "Token of a logged in users"
         required: true
         type: "string"
       - in: "body"
@@ -279,14 +279,14 @@ def edit_bucketlist_item(user, bucketlist_id, item_id):
 )
 @login_required
 def del_bucketlist_item(user, bucketlist_id, item_id):
-    """Delete bucket list item
+    """Delete bucketlists list item
     ---
     tags:
       - "bucketlists items"
     parameters:
       - name: "Authorization"
         in: "header"
-        description: "Token of a logged in user"
+        description: "Token of a logged in users"
         required: true
         type: "string"
     responses:

@@ -2,15 +2,14 @@
 
 from flasgger import Swagger
 from flask import Flask
-from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
 
+from app.extensions import setup_extensions
+from app.extensions.bcrypt import bcrypt
+from app.extensions.database import db
 from config import config
 
-db = SQLAlchemy()
-bcrypt = Bcrypt()
 migrate = Migrate()
 swagger = Swagger()
 
@@ -28,10 +27,9 @@ def create_app(config_name):
     migrate.init_app(app, db)
 
     # register blueprints
-    from app.api.auth import auth_blueprint
-    from app.api.bucketlists import bucketlist_blueprint
+    from app.api.blueprint import blueprint
 
-    app.register_blueprint(auth_blueprint, url_prefix="/auth")
-    app.register_blueprint(bucketlist_blueprint, url_prefix="/bucketlists")
+    app.register_blueprint(blueprint)
+    setup_extensions(app)
 
     return app

@@ -16,7 +16,7 @@ class TestAuthCase(BaseTestCase):
         self.app_context.push()
         self.client = self.app.test_client(self)
         db.create_all()
-        # log in a user
+        # log in a users
         self.resp = self.client.post(
             "auth/register",
             data=json.dumps(dict(username="testuser", password="testpassword")),
@@ -61,7 +61,7 @@ class TestAuthCase(BaseTestCase):
             self.assertIsNone(data["token"])
 
     def test_add_duplicate_user(self):
-        """Ensure that an error is returned on a duplicate user registration"""
+        """Ensure that an error is returned on a duplicate users registration"""
         with self.client:
             response = self.client.post(
                 "auth/register",
@@ -75,7 +75,7 @@ class TestAuthCase(BaseTestCase):
             self.assertIsNone(data["token"])
 
     def test_user_correct_login(self):
-        """Ensure that user logs in with correct credentials"""
+        """Ensure that users logs in with correct credentials"""
         with self.client:
             response = self.client.post(
                 "auth/login",
@@ -87,7 +87,7 @@ class TestAuthCase(BaseTestCase):
             self.assertIn("Success", data["status"])
 
     def test_user_incorrect_password(self):
-        """Ensure that user doesnt logs in with incorrect credentials"""
+        """Ensure that users doesnt logs in with incorrect credentials"""
         with self.client:
             response = self.client.post(
                 "auth/login",
@@ -99,7 +99,7 @@ class TestAuthCase(BaseTestCase):
             self.assertIn("Fail", data["status"])
 
     def test_user_incorrect_username(self):
-        """Ensure that user doesnt logs in with incorrect credentials"""
+        """Ensure that users doesnt logs in with incorrect credentials"""
         with self.client:
             response = self.client.post(
                 "auth/login",
@@ -111,7 +111,7 @@ class TestAuthCase(BaseTestCase):
             self.assertIn("Fail", data["status"])
 
     def test_user_reset_password(self):
-        """Ensure that user can reset password"""
+        """Ensure that users can reset password"""
         with self.client:
             response = self.client.post(
                 "auth/reset-password",
@@ -131,7 +131,7 @@ class TestAuthCase(BaseTestCase):
             self.assertTrue(data["token"])
 
     def test_user_reset_incorrectpassword(self):
-        """Ensure that user can reset password"""
+        """Ensure that users can reset password"""
         with self.client:
             response = self.client.post(
                 "auth/reset-password",

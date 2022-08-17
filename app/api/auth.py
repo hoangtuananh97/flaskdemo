@@ -3,16 +3,16 @@ from flask import Blueprint, current_app, jsonify, request
 from sqlalchemy.exc import IntegrityError
 
 from app import bcrypt, db
-from app.models import Users
-from app.utils import add_user, login_required, validate_auth_json
+from app.api.model.account.user import Users
+from app.core.common.common import add_user
+from app.core.common.utils import login_required
 
 auth_blueprint = Blueprint("auth", __name__)
 
 
 @auth_blueprint.route("/register", methods=["POST"])
-@validate_auth_json
 def register():
-    """Register a new user
+    """Register a new users
     ---
     tags:
       - "auth"
@@ -64,7 +64,6 @@ def register():
 
 
 @auth_blueprint.route("/login", methods=["POST"])
-@validate_auth_json
 def login():
     """Login in old users
     ---
@@ -128,7 +127,7 @@ def reset_password(user):
     parameters:
       - name: "Authorization"
         in: "header"
-        description: "Token of a logged in user"
+        description: "Token of a logged in users"
         required: true
         type: "string"
       - in: "body"
@@ -181,14 +180,14 @@ def reset_password(user):
 @auth_blueprint.route("/logout", methods=["GET"])
 @login_required
 def logout(user):
-    """Log out user
+    """Log out users
     ---
     tags:
       - "auth"
     parameters:
       - name: "Authorization"
         in: "header"
-        description: "Token of a logged in user"
+        description: "Token of a logged in users"
         required: true
         type: "string"
     responses:
