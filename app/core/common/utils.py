@@ -23,6 +23,7 @@ def login_required(function):
         user = Users.query.filter_by(id=user_id).first()
         if not user:
             raise UnauthorizedException(message=user_id)
-        return function(user, *args, **kwargs)
+        request.current_user = user
+        return function(*args, **kwargs)
 
     return decorated

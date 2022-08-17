@@ -1,10 +1,8 @@
-from datetime import date
 from enum import Enum
 from typing import Type
 
 from marshmallow import ValidationError
 from marshmallow.validate import Email, Length, Regexp, Validator
-from sqlalchemy import or_
 
 from .validate_error_code import ValidateErrorCode
 

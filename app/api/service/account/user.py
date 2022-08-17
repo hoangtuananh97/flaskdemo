@@ -1,6 +1,6 @@
 from app import bcrypt
 from app.api.model.account.user import Users
-from app.core.common.common import add_user, save_data
+from app.core.common.common import add_user
 from app.core.exceptions.bad_request import BadRequestException
 from app.core.exceptions.un_authorized import UnauthorizedException
 
@@ -13,7 +13,7 @@ def login(username, password):
             if auth_token:
                 return {"token": auth_token}
         raise UnauthorizedException()
-    except Exception as e:
+    except Exception:
         raise UnauthorizedException()
 
 
@@ -21,5 +21,5 @@ def register(username, password):
     try:
         user = add_user(username, password)
         return {"id": user.id, "username": user.username}
-    except Exception as e:
+    except Exception:
         raise BadRequestException()

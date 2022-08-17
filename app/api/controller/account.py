@@ -14,7 +14,7 @@ from app.schema.response.users.user import UserLoginResponseSchema, UserResponse
 api = AccountBlueprint.api
 
 
-@api.route("/login/")
+@api.route("/login")
 class AccountLogin(Resource):
     @accepts(
         api=api,
@@ -28,7 +28,7 @@ class AccountLogin(Resource):
         return login(username, password)
 
 
-@api.route("/register/")
+@api.route("/register")
 class Register(Resource):
     @accepts(
         api=api,

@@ -13,5 +13,5 @@ api = Api(
     description="",
 )
 
-api.add_namespace(account_ns, path="/api/accounts/")
-api.add_namespace(bucket_list_ns, path="/api/bucketlists/")
+api.add_namespace(account_ns, path="/api/accounts")
+api.add_namespace(bucket_list_ns, path="/api/bucketlists")

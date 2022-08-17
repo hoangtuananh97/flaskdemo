@@ -52,3 +52,8 @@ def save_data(data):
     db.session.add(data)
     db.session.commit()
     return data
+
+
+def delete_data(data):
+    db.session.delete(data)
+    db.session.commit()
