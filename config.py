@@ -27,7 +27,7 @@ class TestingConfig(BaseConfig):
     """ Testing configuration """
     DEBUG = False
     TESTING = False
-    SQLALCHEMY_DATABASE_URI = "postgresql://saleor:saleor@localhost/flaskdemo"
+    SQLALCHEMY_DATABASE_URI = "postgresql://saleor:saleor@localhost/flaskdemo_test"
     BCRYPT_LOG_ROUNDS = 4
     TOKEN_EXPIRATION_DAYS = 0
     TOKEN_EXPIRATION_SECONDS = 5

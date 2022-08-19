@@ -6,21 +6,19 @@ on:
     branches: [master]
 
 env:
-  DATABASE_URL: "postgres://saleor:saleor@postgres:5432/flaskdemo"
+  DATABASE_URL: "postgres://saleor:saleor@postgres:5432/flaskdemo_test"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     services:
-      python:
-        image: python:3.8
       postgres:
         image: postgres
         env:
           POSTGRES_USER: saleor
           POSTGRES_PASSWORD: saleor
-          POSTGRES_DB: flaskdemo
+          POSTGRES_DB: flaskdemo_test
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -30,6 +28,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
 
       - name: Check directory
         run: ls -al
@@ -52,13 +55,11 @@ jobs:
           python -m pip install wheel
           python -m pip install -r requirements.txt
 
-      - name: Create DB
-        run: |
-          python manage.py recreate_db
+#      - name: Create DB
+#        run: python manage.py recreate_db
 
       - name: Run test
-        run: |
-          python -m unittest
+        run: python -m unittest
 #
 #      - uses: actions/cache@v2
 #        with:
