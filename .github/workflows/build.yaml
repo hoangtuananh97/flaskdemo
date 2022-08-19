@@ -66,11 +66,13 @@ jobs:
 
       - name: Create DB
         env:
+          FLASK_ENV: testing
           DATABASE_URL: postgresql://saleor:saleor@postgres:${{ job.services.postgres.ports[5432] }}/flaskdemo_test
         run: python manage.py recreate_db
 
       - name: Run test
         env:
+          FLASK_ENV: testing
           DATABASE_URL: postgresql://saleor:saleor@postgres:${{ job.services.postgres.ports[5432] }}/flaskdemo_test
         run: python -m unittest
 #
