@@ -49,7 +49,7 @@ def register():
             response_object = {
                 "status": "success",
                 "message": username,
-                "token": user.encode_auth_token(user.id).decode(),
+                "token": user.encode_auth_token(user.id),
             }
             return jsonify(response_object), 201
         else:

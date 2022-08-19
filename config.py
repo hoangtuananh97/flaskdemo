@@ -23,15 +23,14 @@ class DevelopmentConfig(BaseConfig):
     BCRYPT_LOG_ROUNDS = 4
 
 
-#
-# class TestingConfig(BaseConfig):
-#     """ Testing configuration """
-#     DEBUG = False
-#     TESTING = False
-#     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_TEST_URL')
-#     BCRYPT_LOG_ROUNDS = 4
-#     TOKEN_EXPIRATION_DAYS = 0
-#     TOKEN_EXPIRATION_SECONDS = 5
+class TestingConfig(BaseConfig):
+    """ Testing configuration """
+    DEBUG = False
+    TESTING = False
+    SQLALCHEMY_DATABASE_URI = "postgresql://saleor:saleor@localhost/flaskdemo"
+    BCRYPT_LOG_ROUNDS = 4
+    TOKEN_EXPIRATION_DAYS = 0
+    TOKEN_EXPIRATION_SECONDS = 5
 
 
 class ProductionConfig(BaseConfig):
@@ -44,7 +43,7 @@ class ProductionConfig(BaseConfig):
 
 config = {
     "development": DevelopmentConfig,
-    # 'testing': TestingConfig,
+    'testing': TestingConfig,
     "production": ProductionConfig,
     "default": DevelopmentConfig,
 }

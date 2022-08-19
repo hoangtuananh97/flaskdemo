@@ -48,7 +48,9 @@ jobs:
           python -m pip install wheel
           python -m pip install -r requirements.txt
 
-      # - name: RUn test
+       - name: Run test
+         run: |
+          python -m unittest
 
       - uses: actions/cache@v2
         with:
