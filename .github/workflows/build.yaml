@@ -5,9 +5,6 @@ on:
   push:
     branches: [master]
 
-env:
-  DATABASE_URL: "postgres://saleor:saleor@postgres:5432/flaskdemo_test"
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -67,13 +64,13 @@ jobs:
       - name: Create DB
         env:
           FLASK_ENV: testing
-          DATABASE_URL: postgresql://saleor:saleor@postgres:${{ job.services.postgres.ports[5432] }}/flaskdemo_test
+          DATABASE_URL: postgresql://saleor:saleor@localhost:${{ job.services.postgres.ports[5432] }}/flaskdemo_test
         run: python manage.py recreate_db
 
       - name: Run test
         env:
           FLASK_ENV: testing
-          DATABASE_URL: postgresql://saleor:saleor@postgres:${{ job.services.postgres.ports[5432] }}/flaskdemo_test
+          DATABASE_URL: postgresql://saleor:saleor@localhost:${{ job.services.postgres.ports[5432] }}/flaskdemo_test
         run: python -m unittest
 #
 #      - uses: actions/cache@v2
