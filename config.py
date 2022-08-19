@@ -18,8 +18,8 @@ class DevelopmentConfig(BaseConfig):
     """Development configuration"""
 
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "postgresql://saleor:saleor@localhost/flaskdemo"
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    # SQLALCHEMY_DATABASE_URI = "postgresql://saleor:saleor@localhost/flaskdemo"
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     BCRYPT_LOG_ROUNDS = 4
 
 
@@ -47,5 +47,5 @@ config = {
     "development": DevelopmentConfig,
     "testing": TestingConfig,
     "production": ProductionConfig,
-    "default": DevelopmentConfig,
+    "default": TestingConfig,
 }
