@@ -37,11 +37,11 @@ jobs:
         run: apt-get install -y libpq-dev
 
       - uses: actions/cache@v2
-        - with:
-            path: ~/.cache/pip
-            key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-            restore-keys: |
-              - ${{ runner.os }}-pip-
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            - ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: |
@@ -51,11 +51,11 @@ jobs:
       # - name: RUn test
 
       - uses: actions/cache@v2
-        - with:
-            path: ~/.cache/pre-commit
-            key: ${{ runner.os }}-pre-commit-${{ hashFiles('**/.pre-commit-config.yaml') }}
-            restore-keys: |
-              - ${{ runner.os }}-pre-commit-
+        with:
+          path: ~/.cache/pre-commit
+          key: ${{ runner.os }}-pre-commit-${{ hashFiles('**/.pre-commit-config.yaml') }}
+          restore-keys: |
+            - ${{ runner.os }}-pre-commit-
 
       - name: Run Linters and Checks
         run: |
